@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GreyMatterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GreyMatter.dbo.Option' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Option">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="DisplayText" />
+            <PropertyRef Name="SituationId" />
+            <PropertyRef Name="Cost" />
+            <PropertyRef Name="MentalEffect" />
+            <PropertyRef Name="PhysicalEffect" />
+            <PropertyRef Name="CreatorId" />
+            <PropertyRef Name="CreatedOnUtc" />
+            <PropertyRef Name="UpdatedOnUtc" />
+            <PropertyRef Name="UpVotes" />
+            <PropertyRef Name="DownVotes" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DisplayText" Type="nvarchar" MaxLength="600" Nullable="false" />
+          <Property Name="SituationId" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="int" Nullable="false" />
+          <Property Name="MentalEffect" Type="int" Nullable="false" />
+          <Property Name="PhysicalEffect" Type="int" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="PictureAddress" Type="nvarchar" MaxLength="400" />
+          <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOnUtc" Type="datetime" Nullable="false" />
+          <Property Name="UpVotes" Type="int" Nullable="false" />
+          <Property Name="DownVotes" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OptionVote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="VoterId" Type="int" Nullable="false" />
+          <Property Name="OptionId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GreyMatter.dbo.Outcome' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Outcome">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OptionId" />
+            <PropertyRef Name="SituationId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="DisplayText" />
+            <PropertyRef Name="CreatorId" />
+            <PropertyRef Name="CreatedOnUtc" />
+            <PropertyRef Name="UpdatedOnUtc" />
+            <PropertyRef Name="UpVotes" />
+            <PropertyRef Name="DownVotes" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="OptionId" Type="int" Nullable="false" />
+          <Property Name="SituationId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DisplayText" Type="nvarchar" MaxLength="600" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="PictureAddress" Type="nvarchar" MaxLength="400" />
+          <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOnUtc" Type="datetime" Nullable="false" />
+          <Property Name="UpVotes" Type="int" Nullable="false" />
+          <Property Name="DownVotes" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OutcomeVote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VoterId" Type="int" Nullable="false" />
+          <Property Name="OutcomeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Situation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DisplayText" Type="nvarchar" MaxLength="600" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="PictureAddress" Type="nvarchar" MaxLength="400" />
+          <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOnUtc" Type="datetime" Nullable="false" />
+          <Property Name="UpVotes" Type="int" Nullable="false" />
+          <Property Name="DownVotes" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SituationVote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VoterId" Type="int" Nullable="false" />
+          <Property Name="SituationId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GreyMatter.dbo.User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="EmailVerified" />
+            <PropertyRef Name="Role" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="EmailVerified" Type="bit" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="GreyMatterModelStoreContainer">
+          <EntitySet Name="OptionVote" EntityType="Self.OptionVote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OutcomeVote" EntityType="Self.OutcomeVote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Situation" EntityType="Self.Situation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SituationVote" EntityType="Self.SituationVote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Option" EntityType="Self.Option" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Option].[Id] AS [Id], 
+    [Option].[Name] AS [Name], 
+    [Option].[DisplayText] AS [DisplayText], 
+    [Option].[SituationId] AS [SituationId], 
+    [Option].[Cost] AS [Cost], 
+    [Option].[MentalEffect] AS [MentalEffect], 
+    [Option].[PhysicalEffect] AS [PhysicalEffect], 
+    [Option].[CreatorId] AS [CreatorId], 
+    [Option].[PictureAddress] AS [PictureAddress], 
+    [Option].[CreatedOnUtc] AS [CreatedOnUtc], 
+    [Option].[UpdatedOnUtc] AS [UpdatedOnUtc], 
+    [Option].[UpVotes] AS [UpVotes], 
+    [Option].[DownVotes] AS [DownVotes]
+    FROM [dbo].[Option] AS [Option]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Outcome" EntityType="Self.Outcome" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Outcome].[Id] AS [Id], 
+    [Outcome].[OptionId] AS [OptionId], 
+    [Outcome].[SituationId] AS [SituationId], 
+    [Outcome].[Name] AS [Name], 
+    [Outcome].[DisplayText] AS [DisplayText], 
+    [Outcome].[CreatorId] AS [CreatorId], 
+    [Outcome].[PictureAddress] AS [PictureAddress], 
+    [Outcome].[CreatedOnUtc] AS [CreatedOnUtc], 
+    [Outcome].[UpdatedOnUtc] AS [UpdatedOnUtc], 
+    [Outcome].[UpVotes] AS [UpVotes], 
+    [Outcome].[DownVotes] AS [DownVotes]
+    FROM [dbo].[Outcome] AS [Outcome]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="User" EntityType="Self.User" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [User].[Id] AS [Id], 
+    [User].[Username] AS [Username], 
+    [User].[Password] AS [Password], 
+    [User].[EmailVerified] AS [EmailVerified], 
+    [User].[Role] AS [Role]
+    FROM [dbo].[User] AS [User]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GreyMatterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="OptionVote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="VoterId" Type="Int32" Nullable="false" />
+          <Property Name="OptionId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OutcomeVote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VoterId" Type="Int32" Nullable="false" />
+          <Property Name="OutcomeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Situation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisplayText" Type="String" MaxLength="600" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="PictureAddress" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpVotes" Type="Int32" Nullable="false" />
+          <Property Name="DownVotes" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SituationVote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VoterId" Type="Int32" Nullable="false" />
+          <Property Name="SituationId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Option">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="DisplayText" />
+            <PropertyRef Name="SituationId" />
+            <PropertyRef Name="Cost" />
+            <PropertyRef Name="MentalEffect" />
+            <PropertyRef Name="PhysicalEffect" />
+            <PropertyRef Name="CreatorId" />
+            <PropertyRef Name="CreatedOnUtc" />
+            <PropertyRef Name="UpdatedOnUtc" />
+            <PropertyRef Name="UpVotes" />
+            <PropertyRef Name="DownVotes" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisplayText" Type="String" MaxLength="600" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SituationId" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Int32" Nullable="false" />
+          <Property Name="MentalEffect" Type="Int32" Nullable="false" />
+          <Property Name="PhysicalEffect" Type="Int32" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="PictureAddress" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpVotes" Type="Int32" Nullable="false" />
+          <Property Name="DownVotes" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Outcome">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OptionId" />
+            <PropertyRef Name="SituationId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="DisplayText" />
+            <PropertyRef Name="CreatorId" />
+            <PropertyRef Name="CreatedOnUtc" />
+            <PropertyRef Name="UpdatedOnUtc" />
+            <PropertyRef Name="UpVotes" />
+            <PropertyRef Name="DownVotes" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="OptionId" Type="Int32" Nullable="false" />
+          <Property Name="SituationId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisplayText" Type="String" MaxLength="600" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="PictureAddress" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpVotes" Type="Int32" Nullable="false" />
+          <Property Name="DownVotes" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="EmailVerified" />
+            <PropertyRef Name="Role" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailVerified" Type="Boolean" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="GreyMatterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="OptionVotes" EntityType="Self.OptionVote" />
+          <EntitySet Name="OutcomeVotes" EntityType="Self.OutcomeVote" />
+          <EntitySet Name="Situations" EntityType="Self.Situation" />
+          <EntitySet Name="SituationVotes" EntityType="Self.SituationVote" />
+          <EntitySet Name="Options" EntityType="Self.Option" />
+          <EntitySet Name="Outcomes" EntityType="Self.Outcome" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GreyMatterModelStoreContainer" CdmEntityContainer="GreyMatterEntities">
+          <EntitySetMapping Name="OptionVotes">
+            <EntityTypeMapping TypeName="GreyMatterModel.OptionVote">
+              <MappingFragment StoreEntitySet="OptionVote">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VoterId" ColumnName="VoterId" />
+                <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OutcomeVotes">
+            <EntityTypeMapping TypeName="GreyMatterModel.OutcomeVote">
+              <MappingFragment StoreEntitySet="OutcomeVote">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VoterId" ColumnName="VoterId" />
+                <ScalarProperty Name="OutcomeId" ColumnName="OutcomeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Situations">
+            <EntityTypeMapping TypeName="GreyMatterModel.Situation">
+              <MappingFragment StoreEntitySet="Situation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DisplayText" ColumnName="DisplayText" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="PictureAddress" ColumnName="PictureAddress" />
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
+                <ScalarProperty Name="UpVotes" ColumnName="UpVotes" />
+                <ScalarProperty Name="DownVotes" ColumnName="DownVotes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SituationVotes">
+            <EntityTypeMapping TypeName="GreyMatterModel.SituationVote">
+              <MappingFragment StoreEntitySet="SituationVote">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VoterId" ColumnName="VoterId" />
+                <ScalarProperty Name="SituationId" ColumnName="SituationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Options">
+            <EntityTypeMapping TypeName="GreyMatterModel.Option">
+              <MappingFragment StoreEntitySet="Option">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DisplayText" ColumnName="DisplayText" />
+                <ScalarProperty Name="SituationId" ColumnName="SituationId" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="MentalEffect" ColumnName="MentalEffect" />
+                <ScalarProperty Name="PhysicalEffect" ColumnName="PhysicalEffect" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="PictureAddress" ColumnName="PictureAddress" />
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
+                <ScalarProperty Name="UpVotes" ColumnName="UpVotes" />
+                <ScalarProperty Name="DownVotes" ColumnName="DownVotes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Outcomes">
+            <EntityTypeMapping TypeName="GreyMatterModel.Outcome">
+              <MappingFragment StoreEntitySet="Outcome">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+                <ScalarProperty Name="SituationId" ColumnName="SituationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DisplayText" ColumnName="DisplayText" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="PictureAddress" ColumnName="PictureAddress" />
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
+                <ScalarProperty Name="UpVotes" ColumnName="UpVotes" />
+                <ScalarProperty Name="DownVotes" ColumnName="DownVotes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="GreyMatterModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmailVerified" ColumnName="EmailVerified" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GreyMatterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="OptionVote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="VoterId" Type="Int32" Nullable="false" />
+    <Property Name="OptionId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OutcomeVote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VoterId" Type="Int32" Nullable="false" />
+    <Property Name="OutcomeId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Situation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DisplayText" Type="String" MaxLength="600" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatorId" Type="Int32" Nullable="false" />
+    <Property Name="PictureAddress" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpVotes" Type="Int32" Nullable="false" />
+    <Property Name="DownVotes" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SituationVote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VoterId" Type="Int32" Nullable="false" />
+    <Property Name="SituationId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Option">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="DisplayText" />
+      <PropertyRef Name="SituationId" />
+      <PropertyRef Name="Cost" />
+      <PropertyRef Name="MentalEffect" />
+      <PropertyRef Name="PhysicalEffect" />
+      <PropertyRef Name="CreatorId" />
+      <PropertyRef Name="CreatedOnUtc" />
+      <PropertyRef Name="UpdatedOnUtc" />
+      <PropertyRef Name="UpVotes" />
+      <PropertyRef Name="DownVotes" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DisplayText" Type="String" MaxLength="600" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SituationId" Type="Int32" Nullable="false" />
+    <Property Name="Cost" Type="Int32" Nullable="false" />
+    <Property Name="MentalEffect" Type="Int32" Nullable="false" />
+    <Property Name="PhysicalEffect" Type="Int32" Nullable="false" />
+    <Property Name="CreatorId" Type="Int32" Nullable="false" />
+    <Property Name="PictureAddress" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpVotes" Type="Int32" Nullable="false" />
+    <Property Name="DownVotes" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Outcome">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="OptionId" />
+      <PropertyRef Name="SituationId" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="DisplayText" />
+      <PropertyRef Name="CreatorId" />
+      <PropertyRef Name="CreatedOnUtc" />
+      <PropertyRef Name="UpdatedOnUtc" />
+      <PropertyRef Name="UpVotes" />
+      <PropertyRef Name="DownVotes" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="OptionId" Type="Int32" Nullable="false" />
+    <Property Name="SituationId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DisplayText" Type="String" MaxLength="600" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatorId" Type="Int32" Nullable="false" />
+    <Property Name="PictureAddress" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpVotes" Type="Int32" Nullable="false" />
+    <Property Name="DownVotes" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Password" />
+      <PropertyRef Name="EmailVerified" />
+      <PropertyRef Name="Role" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmailVerified" Type="Boolean" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="GreyMatterEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="OptionVotes" EntityType="Self.OptionVote" />
+    <EntitySet Name="OutcomeVotes" EntityType="Self.OutcomeVote" />
+    <EntitySet Name="Situations" EntityType="Self.Situation" />
+    <EntitySet Name="SituationVotes" EntityType="Self.SituationVote" />
+    <EntitySet Name="Options" EntityType="Self.Option" />
+    <EntitySet Name="Outcomes" EntityType="Self.Outcome" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+  </EntityContainer>
+</Schema>

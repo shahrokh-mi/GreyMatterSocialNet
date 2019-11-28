@@ -1,0 +1,75 @@
+﻿@model IEnumerable<GreyMatterSocialNet.Models.Situation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DisplayText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PictureAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOnUtc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdatedOnUtc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpVotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DownVotes)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisplayText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatorId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PictureAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedOnUtc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedOnUtc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpVotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DownVotes)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

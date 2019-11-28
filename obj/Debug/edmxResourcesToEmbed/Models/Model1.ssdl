@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GreyMatterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GreyMatter.dbo.Option' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Option">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="DisplayText" />
+      <PropertyRef Name="SituationId" />
+      <PropertyRef Name="Cost" />
+      <PropertyRef Name="MentalEffect" />
+      <PropertyRef Name="PhysicalEffect" />
+      <PropertyRef Name="CreatorId" />
+      <PropertyRef Name="CreatedOnUtc" />
+      <PropertyRef Name="UpdatedOnUtc" />
+      <PropertyRef Name="UpVotes" />
+      <PropertyRef Name="DownVotes" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DisplayText" Type="nvarchar" MaxLength="600" Nullable="false" />
+    <Property Name="SituationId" Type="int" Nullable="false" />
+    <Property Name="Cost" Type="int" Nullable="false" />
+    <Property Name="MentalEffect" Type="int" Nullable="false" />
+    <Property Name="PhysicalEffect" Type="int" Nullable="false" />
+    <Property Name="CreatorId" Type="int" Nullable="false" />
+    <Property Name="PictureAddress" Type="nvarchar" MaxLength="400" />
+    <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedOnUtc" Type="datetime" Nullable="false" />
+    <Property Name="UpVotes" Type="int" Nullable="false" />
+    <Property Name="DownVotes" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OptionVote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="VoterId" Type="int" Nullable="false" />
+    <Property Name="OptionId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GreyMatter.dbo.Outcome' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Outcome">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="OptionId" />
+      <PropertyRef Name="SituationId" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="DisplayText" />
+      <PropertyRef Name="CreatorId" />
+      <PropertyRef Name="CreatedOnUtc" />
+      <PropertyRef Name="UpdatedOnUtc" />
+      <PropertyRef Name="UpVotes" />
+      <PropertyRef Name="DownVotes" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="OptionId" Type="int" Nullable="false" />
+    <Property Name="SituationId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DisplayText" Type="nvarchar" MaxLength="600" Nullable="false" />
+    <Property Name="CreatorId" Type="int" Nullable="false" />
+    <Property Name="PictureAddress" Type="nvarchar" MaxLength="400" />
+    <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedOnUtc" Type="datetime" Nullable="false" />
+    <Property Name="UpVotes" Type="int" Nullable="false" />
+    <Property Name="DownVotes" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OutcomeVote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VoterId" Type="int" Nullable="false" />
+    <Property Name="OutcomeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Situation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DisplayText" Type="nvarchar" MaxLength="600" Nullable="false" />
+    <Property Name="CreatorId" Type="int" Nullable="false" />
+    <Property Name="PictureAddress" Type="nvarchar" MaxLength="400" />
+    <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedOnUtc" Type="datetime" Nullable="false" />
+    <Property Name="UpVotes" Type="int" Nullable="false" />
+    <Property Name="DownVotes" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SituationVote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VoterId" Type="int" Nullable="false" />
+    <Property Name="SituationId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GreyMatter.dbo.User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Password" />
+      <PropertyRef Name="EmailVerified" />
+      <PropertyRef Name="Role" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="EmailVerified" Type="bit" Nullable="false" />
+    <Property Name="Role" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="GreyMatterModelStoreContainer">
+    <EntitySet Name="OptionVote" EntityType="Self.OptionVote" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OutcomeVote" EntityType="Self.OutcomeVote" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Situation" EntityType="Self.Situation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SituationVote" EntityType="Self.SituationVote" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Option" EntityType="Self.Option" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Option].[Id] AS [Id], 
+    [Option].[Name] AS [Name], 
+    [Option].[DisplayText] AS [DisplayText], 
+    [Option].[SituationId] AS [SituationId], 
+    [Option].[Cost] AS [Cost], 
+    [Option].[MentalEffect] AS [MentalEffect], 
+    [Option].[PhysicalEffect] AS [PhysicalEffect], 
+    [Option].[CreatorId] AS [CreatorId], 
+    [Option].[PictureAddress] AS [PictureAddress], 
+    [Option].[CreatedOnUtc] AS [CreatedOnUtc], 
+    [Option].[UpdatedOnUtc] AS [UpdatedOnUtc], 
+    [Option].[UpVotes] AS [UpVotes], 
+    [Option].[DownVotes] AS [DownVotes]
+    FROM [dbo].[Option] AS [Option]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Outcome" EntityType="Self.Outcome" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Outcome].[Id] AS [Id], 
+    [Outcome].[OptionId] AS [OptionId], 
+    [Outcome].[SituationId] AS [SituationId], 
+    [Outcome].[Name] AS [Name], 
+    [Outcome].[DisplayText] AS [DisplayText], 
+    [Outcome].[CreatorId] AS [CreatorId], 
+    [Outcome].[PictureAddress] AS [PictureAddress], 
+    [Outcome].[CreatedOnUtc] AS [CreatedOnUtc], 
+    [Outcome].[UpdatedOnUtc] AS [UpdatedOnUtc], 
+    [Outcome].[UpVotes] AS [UpVotes], 
+    [Outcome].[DownVotes] AS [DownVotes]
+    FROM [dbo].[Outcome] AS [Outcome]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="User" EntityType="Self.User" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [User].[Id] AS [Id], 
+    [User].[Username] AS [Username], 
+    [User].[Password] AS [Password], 
+    [User].[EmailVerified] AS [EmailVerified], 
+    [User].[Role] AS [Role]
+    FROM [dbo].[User] AS [User]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
